@@ -1,0 +1,15 @@
+nav {
+  padding: 20px;
+  background-color: #f2f2f2;
+}
+
+nav a {
+  margin-right: 15px;
+  text-decoration: none;
+  color: black;
+  font-weight: 500;
+}
+
+div {
+  padding: 20px;
+}
