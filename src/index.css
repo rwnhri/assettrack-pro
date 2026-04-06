@@ -109,3 +109,39 @@ code {
   padding: 4px 8px;
   background: var(--code-bg);
 }
+
+.asset-form-container {
+  width: 400px;
+  margin: 20px auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  background-color: #f9f9f9;
+}
+
+.asset-form div {
+  margin-bottom: 15px;
+}
+
+.asset-form label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+.asset-form input,
+.asset-form select {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #aaa;
+  border-radius: 5px;
+}
+
+.asset-form button {
+  padding: 10px 15px;
+  border: none;
+  background-color: #2c7be5;
+  color: white;
+  border-radius: 5px;
+  cursor: pointer;
+}
