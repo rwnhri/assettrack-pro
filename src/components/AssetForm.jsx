@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import "./AssetForm.css";
 
 function AssetForm({ onAddAsset, onUpdateAsset, editingAsset, clearEdit }) {
   const [formData, setFormData] = useState({
