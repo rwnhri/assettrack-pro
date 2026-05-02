@@ -5,6 +5,8 @@ import com.assettrack.assettrack_backend.Repository.AssetRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.http.HttpStatus;
+import java.util.List;
 
 @RestController
 @RequestMapping("/assets")
@@ -31,6 +33,20 @@ public class AssetController {
     }
 
     // PERSON 4 - Get All + Delete
+     @GetMapping
+    public List<Asset> getAllAssets() {
+        return assetRepository.findAll();
+    }
 
+    @DeleteMapping("/{id}")
+    public ResponseEntity<String> deleteAsset(@PathVariable String id) {
+        if (!assetRepository.existsById(id)) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND)
+                    .body("Asset not found");
+        }
+
+        assetRepository.deleteById(id);
+        return ResponseEntity.ok("Asset deleted successfully");
+    }}
 
 }
