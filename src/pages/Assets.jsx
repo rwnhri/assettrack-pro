@@ -20,9 +20,22 @@ function Assets() {
   }, []);
 
   // PERSON 1 
-  const handleAddAsset = (newAsset) => {
-    setAssets([...assets, newAsset]);
-  };
+const handleAddAsset = (newAsset) => {
+  fetch(API, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(newAsset),
+  })
+    .then((res) => {
+      if (!res.ok) throw new Error("Failed to add asset");
+      return res.json();
+    })
+    .then(() => {
+      loadAssets();
+      alert("Asset added successfully!");
+    })
+    .catch((err) => alert("Add failed: " + err.message));
+};
 
   // PERSON 3 
   const handleUpdateAsset = (updatedAsset) => {
@@ -44,9 +57,17 @@ function Assets() {
   };
 
   // PERSON 4  
-  const handleDeleteAsset = (id) => {
-    setAssets(assets.filter((asset) => asset.id !== id));
-  };
+const handleDeleteAsset = (id) => {
+  fetch(`${API}/${id}`, {
+    method: "DELETE",
+  })
+    .then((res) => {
+      if (!res.ok) throw new Error("Failed to delete asset");
+      loadAssets();
+      alert("Asset deleted successfully!");
+    })
+    .catch((err) => alert("Delete failed: " + err.message));
+};
 
   const handleEditAsset = (asset) => {
     setEditingAsset(asset);
