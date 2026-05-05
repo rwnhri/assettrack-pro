@@ -17,9 +17,18 @@ public class AssetController {
     private AssetRepository assetRepository;
 
     // PERSON 1 - Add Asset (POST)
-
+@PostMapping
+public ResponseEntity<Asset> addAsset(@RequestBody Asset asset) {
+    Asset saved = assetRepository.save(asset);
+    return ResponseEntity.ok(saved);
+}
     // PERSON 2 - Search by ID (GET)
-
+@GetMapping("/{id}")
+public ResponseEntity<?> getAssetById(@PathVariable String id) {
+    return assetRepository.findById(id)
+            .<ResponseEntity<?>>map(ResponseEntity::ok)
+            .orElse(ResponseEntity.status(HttpStatus.NOT_FOUND).body("Asset not found"));
+}
     // PERSON 3 - Update Asset (PUT) ✅
     @PutMapping("/{id}")
     public ResponseEntity<Asset> updateAsset(@PathVariable String id, @RequestBody Asset updatedAsset) {
@@ -47,6 +56,6 @@ public class AssetController {
 
         assetRepository.deleteById(id);
         return ResponseEntity.ok("Asset deleted successfully");
-    }}
-
+    }
 }
+
