@@ -5,6 +5,7 @@ import Assets from "./pages/Assets.jsx";
 import About from "./pages/About.jsx";
 import "./App.css";
 import Servers from "./pages/Servers";
+import Routers from "./pages/Routers";
 
 function App() {
   return (
@@ -14,7 +15,9 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/assets" element={<Assets />} />
         <Route path="/servers" element={<Servers />} />
+        <Route path="/routers" element={<Routers />} />
         <Route path="/about" element={<About />} />
+        
       </Routes>
     </Router>
   );
