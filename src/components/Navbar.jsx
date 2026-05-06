@@ -6,6 +6,7 @@ function Navbar() {
       <div className="nav-container">
         <Link to="/">Home</Link>
         <Link to="/assets">Assets</Link>
+        <a href="/servers">Servers</a>
         <Link to="/about">About</Link>
       </div>
     </nav>
